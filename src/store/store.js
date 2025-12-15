@@ -12,6 +12,9 @@ const cartSlice = createSlice({
     toggleCart(state) {
       state.isOpen = !state.isOpen;
     },
+    addToCart(state, action) {
+      state.items = [...state.items, { ...action.payload, quantity: 1 }];
+    },
   },
 });
 
