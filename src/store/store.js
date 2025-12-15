@@ -13,7 +13,7 @@ const cartSlice = createSlice({
       state.isOpen = !state.isOpen;
     },
     addToCart(state, action) {
-      state.items = [...state.items, { ...action.payload, quantity: 1 }];
+      state.items = [...state.items, { ...action.payload, quantity: 1, total: action.payload.price }];
     },
   },
 });
