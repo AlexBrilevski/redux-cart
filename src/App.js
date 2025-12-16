@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 
 function App() {
-  const isCartOpen = useSelector(state => state.cart.isOpen);
+  const isCartOpen = useSelector(state => state.ui.isCartOpen);
 
   return (
     <Layout>
