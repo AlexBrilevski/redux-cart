@@ -3,7 +3,7 @@ import { cartActions } from '../../store/store';
 import classes from './CartButton.module.css';
 
 const CartButton = (props) => {
-  const cartItemsCount = useSelector(state => state.cart.items.length);
+  const cartItemsCount = useSelector(state => state.cart.itemsCount);
   const dispatch = useDispatch();
 
   const handleCartClick = () => {

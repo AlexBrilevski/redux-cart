@@ -2,6 +2,7 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const cartInitState = {
   items: [],
+  itemsCount: 0,
   isOpen: false,
 };
 
@@ -15,7 +16,8 @@ const cartSlice = createSlice({
     addToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find(item => item.id === newItem.id);
-      console.log(existingItem);
+      state.itemsCount++;
+
       if (!existingItem) {
         state.items.push({
           ...newItem,
@@ -30,7 +32,8 @@ const cartSlice = createSlice({
     removeFromCart(state, action) {
       const id = action.payload;
       const existingItem = state.items.find(item => item.id === id);
-      console.log(existingItem);
+      state.itemsCount--;
+
       if (existingItem.quantity === 1) {
         state.items = state.items.filter(item => item.id !== id);
       } else {
