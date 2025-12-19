@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { storeCartData } from './store/cart-slice';
+import { fetchCartData, storeCartData } from './store/cart-actions';
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
@@ -15,12 +15,18 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchCartData());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (isInit) {
       isInit = false;
       return;
     }
 
-    dispatch(storeCartData(cart));
+    if (cart.changed) {
+      dispatch(storeCartData(cart));
+    }
   }, [cart, dispatch]);
 
   return (
